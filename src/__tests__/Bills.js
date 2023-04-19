@@ -53,8 +53,8 @@ describe("Given I am connected as an employee", () => {
 })
 })
 
-describe("When I click on new bills button", () => {
-  test("Then I should be navigate to new bill form", () => {
+describe("", () => {
+  test("TWhen I click on new bills buttonhen I should be navigate to new bill form", () => {
       document.body.innerHTML = BillsUI({ data: bills })
 
       const billsList = new Bills({
@@ -77,8 +77,8 @@ describe("When I click on new bills button", () => {
   })
 })
 
-describe("When I click on eye icon", () => {
-  test("Then I should open the modal", () => {
+describe("", () => {
+  test("TheWhen I click on eye iconn I should open the modal", () => {
       document.body.innerHTML = BillsUI({ data: bills })
 
       const billsList = new Bills({
@@ -110,7 +110,7 @@ describe("Given I am a user connected as Employee", () => {
           expect(userBills.length).toBe(4)
       })
 
-      test("fetches bills from an API and fails with 404 message error", async () => {
+      test("fretches bills from an API and fails with 404 message error", async () => {
           store.bills.mockImplementationOnce(() => {
               return {
                   list: () => {
