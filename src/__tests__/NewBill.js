@@ -23,18 +23,18 @@ describe("Given I am connected as an employee", () => {
            })
        )
    })
-   describe("When I am on NewBill Page", () => {
-       test("Then bill icon in vertical layout should be highlighted", async () => {
+   describe("Quand je suis sur la page NewBill", () => {
+       test("Ensuite, l'icône de la facture dans la disposition verticale doit être mise en surbrillance", async () => {
            const root = document.createElement("div")
-           root.setAttribute("id", "root")
+           root.setAttribute("id", "root-a")
            document.body.append(root)
            router()
            window.onNavigate(ROUTES_PATH.NewBill)
            await waitFor(() => screen.getByTestId("icon-mail"))
            const mailIcon = screen.getByTestId("icon-mail")
-           expect(mailIcon.className.includes("active-icon")).toBeTruthy()
+           expect(mailIcon.className.includes("actv-icon")).toBeTruthy()
        })
-       test("Then the form should be displayed", () => {
+       test("Ensuite, le formulaire doit être affiché", () => {
            const html = NewBillUI()
            document.body.innerHTML = html
            expect(screen.getByTestId("form-new-bill")).toBeTruthy()
@@ -48,14 +48,14 @@ describe("Given I am connected as an employee", () => {
            expect(screen.getByTestId("file")).toBeTruthy()
            expect(screen.getByRole("button")).toBeTruthy()
        })
-       describe("When I upload a file", () => {
+       describe("Lorsque je télécharge un fichier", () => {
            beforeEach(() => {
                jest.clearAllMocks()
            })
            afterEach(() => {
                jest.clearAllMocks()
            })
-           test("Then I upload a png or jpg/jpeg file", async () => {
+           test("je télécharge un fichier png ou jpg/jpeg", async () => {
                const html = NewBillUI()
                document.body.innerHTML = html
                //to-do write assertion
@@ -74,9 +74,9 @@ describe("Given I am connected as an employee", () => {
                const file = screen.getByTestId("file")
 
                const testFiles = [
-                   new File(["image1"], "image.jpg"),
-                   new File(["image2"], "image.jpeg"),
-                   new File(["image3"], "image.png"),
+                   new File(["image-1"], "image.jpg"),
+                   new File(["image-2"], "image.jpeg"),
+                   new File(["image-3"], "image.png"),
                ]
 
                file.addEventListener("change", handleChangeFile)
@@ -105,8 +105,8 @@ describe("Given I am connected as an employee", () => {
                const file = screen.getByTestId("file")
 
                const testFiles = [
-                   new File(["image4"], "image.pdf"),
-                   new File(["image5"], "image.odt"),
+                   new File(["image-4"], "image.pdf"),
+                   new File(["image-5"], "image.odt"),
                ]
 
                file.addEventListener("change", handleChangeFile)
@@ -188,7 +188,7 @@ describe("Given I am connected as an employee", () => {
                    })
 
                    window.localStorage.setItem("user", JSON.stringify({type: "Employee"}))
-                   document.body.innerHTML = `<div id="root"></div>`
+                   document.body.innerHTML = `<div id="root-a"></div>`
                    router()
 
                    const onNavigate = (pathname) => {

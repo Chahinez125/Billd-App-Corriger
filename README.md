@@ -1,18 +1,8 @@
-
-## L'architecture du projet :
+# L'architecture du projet :
 Ce projet, dit frontend, est connecté à un service API backend que vous devez aussi lancer en local.
-
-Le projet backend se trouve ici: https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-back
-
-## Organiser son espace de travail :
+# Organiser son espace de travail :
 Pour une bonne organization, vous pouvez créer un dossier bill-app dans lequel vous allez cloner le projet backend et par la suite, le projet frontend:
 
-Clonez le projet backend dans le dossier bill-app :
-```
-$ git clone https://github.com/OpenClassrooms-Student-Center/Billed-app-FR-Back.git
-```
-
-```
 bill-app/
    - Billed-app-FR-Back
 ```
@@ -65,7 +55,7 @@ Puis allez à l'adresse : `http://127.0.0.1:8080/`
 $ npm run test
 ```
 
-## Comment lancer un seul test ?
+# Comment lancer un seul test ?
 
 Installez jest-cli :
 
@@ -74,7 +64,7 @@ $npm i -g jest-cli
 $jest src/__tests__/your_test_file.js
 ```
 
-## Comment voir la couverture de test ?
+# Comment voir la couverture de test ?
 
 `http://127.0.0.1:8080/coverage/lcov-report/`
 
