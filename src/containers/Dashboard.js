@@ -145,11 +145,11 @@ export default class {
       this.counter ++
     }
 
-    bills.forEach(bill => {
+    for (let i = 0; i < bills.length; i++) {
+      const bill = bills[i];
+      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills));
       $(`#status-bills-container${this.index} #open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills));
-    })
-
-    return bills
+    }
 
   }
 

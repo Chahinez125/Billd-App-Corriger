@@ -19,11 +19,11 @@ const row = (bill) => {
     `)
   }
 
-const rows = (data) => {
-  return (data && data.length) ? data
-  .sort((currentBill, nextBill) => new Date(nextBill.date) - new Date(currentBill.date))
-  .map(bill => row(bill)).join("") : ""
-}
+  const rows = (data) => {
+    return (data && data.length) ? data
+        .sort((currentBill, nextBill) => new Date(nextBill.date) - new Date(currentBill.date))
+        .map(bill => row(bill)).join("") : ""
+  }
 
 export default ({ data: bills, loading, error }) => {
   
