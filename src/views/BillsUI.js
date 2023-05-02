@@ -19,20 +19,16 @@ const row = (bill) => {
     `)
   }
 
-  const rows = (data) => {
-    if (!data || !data.length) {
-      return "";
-    }
-    return data.sort((currentBill, nextBill) => new Date(nextBill.date) - new Date(currentBill.date))
-      .reduce((accumulator, currentBill) => {
-        return accumulator + row(currentBill);
-      }, "");
-  };
+const rows = (data) => {
+  return (data && data.length) ? data
+      .sort((currentBill, nextBill) => new Date(nextBill.date) - new Date(currentBill.date))
+      .map(bill => row(bill)).join("") : ""
+}
 
 export default ({ data: bills, loading, error }) => {
   
   const modal = () => (`
-    <div class="modal fade" id="modaleFileEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="modaleFile" data-testid="modaleFileEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">

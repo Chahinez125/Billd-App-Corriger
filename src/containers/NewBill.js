@@ -15,46 +15,35 @@ export default class NewBill {
     this.billId = null
     new Logout({ document, localStorage, onNavigate })
   }
-  
   handleChangeFile = e => {
     e.preventDefault()
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
-    handleChangeFile = e => {
-      e.preventDefault();
-      const fileInput = this.document.querySelector(`input[data-testid="file"]`);
-      if (!fileInput) {
-        throw new Error("File input not found");
+    const fileExtension = file.name.split('.')[1]
+
+    const validExtensions = [
+      {
+        name: 'png',
+      },
+      {
+        name: 'jpg',
+      },
+      {
+        name: 'jpeg',
+      },
+    ]
+
+    let isValidExtension = false
+
+    validExtensions.forEach((validExtension) => {
+      if (fileExtension === validExtension.name) {
+        isValidExtension = true
       }
-      const file = fileInput.files[0];
-      if (!file) {
-        throw new Error("No file selected");
-      }
-      const fileExtension = file.name.split('.')[1];
-    
-      const validExtensions = [
-        {
-          name: 'png',
-        },
-        {
-          name: 'jpg',
-        },
-        {
-          name: 'jpeg',
-        },
-      ];
-    
-      let isValidExtension = false;
-    
-      validExtensions.forEach((validExtension) => {
-        if (fileExtension === validExtension.name) {
-          isValidExtension = true;
-        }
-      });
-    
-      if (!isValidExtension) {
-        e.target.value = '';
-      }
+    })
+
+    if (!isValidExtension) {
+      e.target.value = ''
     }
+
     const filePath = e.target.value.split(/\\/g)
     const fileName = filePath[filePath.length-1]
     const formData = new FormData()
