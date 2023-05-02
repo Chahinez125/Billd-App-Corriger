@@ -20,10 +20,14 @@ const row = (bill) => {
   }
 
   const rows = (data) => {
-    return (data && data.length) ? data
-        .sort((currentBill, nextBill) => new Date(nextBill.date) - new Date(currentBill.date))
-        .map(bill => row(bill)).join("") : ""
-  }
+    if (!data || !data.length) {
+      return "";
+    }
+    return data.sort((currentBill, nextBill) => new Date(nextBill.date) - new Date(currentBill.date))
+      .reduce((accumulator, currentBill) => {
+        return accumulator + row(currentBill);
+      }, "");
+  };
 
 export default ({ data: bills, loading, error }) => {
   
